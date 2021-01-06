@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 const cors = require('cors');
 app.use(cors());
 
-//Initialize the main proect folder
+//Initialize the main project folder
 app.use(express.static('website'));
 
 /* Server */
@@ -26,3 +26,21 @@ const port = 8000;
 
 // Setting the server listen on the specified port and use the callback function
 const server = app.listen(port, () => {console.log(`Running on Localhost: ${port}`)});
+
+// Seting up the GET route for the home page
+app.get('/', (req, res) => {
+  console.log(req);
+  res.send(projectData);
+});
+
+// Setting up POST route
+app.post('/', (req, res) => {
+  res.send('POST received');
+});
+
+// Setting an array for the POST request data
+const data = [];
+app.post('/', () => {
+  data.push(req.body);
+  console.log(data);
+});
