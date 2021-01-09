@@ -47,7 +47,7 @@ body{
 
 }
 
-/*  Basic Styling To Override Default For Basic HTML Elements */
+/* Basic Styling To Override Default For Basic HTML Elements */
 label{
   display:block;
   font-size: 27px;
@@ -92,20 +92,17 @@ button:focus {
   outline: none;
 }
 /* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-  color: #f0d43a; 
+::placeholder { /* Firefox, Chrome, Opera */
+  color: #f0d43a;
   font-family: 'Oswald', sans-serif;
+}
 
-} 
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-  color: #f0d43a; 
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #f0d43a;
   font-family: 'Oswald', sans-serif;
+}
 
-} 
-
-::-ms-input-placeholder { /* Microsoft Edge */ 
-  color: #f0d43a; 
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #f0d43a;
   font-family: 'Oswald', sans-serif;
-
-} 
+}

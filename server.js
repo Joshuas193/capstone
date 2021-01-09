@@ -1,11 +1,11 @@
-// Setting an empty JS object to act as an endpoint for all routes
-projectData = {};
-
 // Requiring express
 const express = require('express');
 
 // Starting an instance of the app using express
 const app = express();
+
+// Setting an empty JS object to act as an endpoint for all routes
+projectData = {};
 
 /* Middleware */
 // setting up body-parser as the middleware for express
@@ -25,22 +25,18 @@ app.use(express.static('website'));
 const port = 8000;
 
 // Setting the server listen on the specified port and use the callback function
-const server = app.listen(port, () => {console.log(`Running on Localhost: ${port}`)});
+const server = app.listen(port, () => console.log(`Running on Localhost: ${port}`));
 
-// Seting up the GET route for the home page
-app.get('/', (req, res) => {
-  console.log(req);
+//Setting up the GET request route
+app.get('/journal', (req, res) => {
+  console.log(projectData);
   res.send(projectData);
 });
 
-// Setting up POST route
-app.post('/', (req, res) => {
-  res.send('POST received');
-});
-
-// Setting an array for the POST request data
+// Setting emoty data array
 const data = [];
-app.post('/', () => {
+//Setting up the POST request route
+app.post('/journal', (req, res) => {
+  console.log(req.body);
   data.push(req.body);
-  console.log(data);
 });
