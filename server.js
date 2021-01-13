@@ -27,16 +27,16 @@ const port = 8000;
 // Setting the server listen on the specified port and use the callback function
 const server = app.listen(port, () => console.log(`Running on Localhost: ${port}`));
 
-//Setting up the GET request route
-app.get('/journal', (req, res) => {
-  console.log(projectData);
-  res.send(projectData);
-});
-
-// Setting emoty data array
+// Setting empty data array
 const data = [];
 //Setting up the POST request route
 app.post('/journal', (req, res) => {
-  console.log(req.body);
   data.push(req.body);
+  console.log(data);
+});
+
+//Setting up the GET request route
+app.get('/journal', (req, res) => {
+  res.send(projectData);
+  console.log(projectData);
 });
