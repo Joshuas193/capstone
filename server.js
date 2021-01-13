@@ -27,11 +27,9 @@ const port = 8000;
 // Setting the server listen on the specified port and use the callback function
 const server = app.listen(port, () => console.log(`Running on Localhost: ${port}`));
 
-// Setting empty data array
-const data = [];
 //Setting up the POST request route
 app.post('/journal', (req, res) => {
-  data.push(req.body);
+  projectData.push(req.body);
   console.log(data);
 });
 

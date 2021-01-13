@@ -3,13 +3,21 @@ const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '&units=imperial&appid=c3674100cc3382bf47fccf8637a3e903';
 
 //Adding an event listener to the generate button
-document.querySelector('#generate').addEventListener('click', getZip);
+document.querySelector('#generate').addEventListener('click', createPost);
 
-//callback function that builds the api and collects the weather info from the web
-function getZip(e) {
+//Callback function to create a post
+function createPost() {
+  const feelings = document.querySelector('#feelings').value;
   const zip = document.querySelector('#zip').value;
-  getWeather(baseUrl, zip, apiKey);
+  getWeather(baseUrl, zip, apiKey)
+  // Chaining promises
+  .then(function(data) {
+    console.log(data);
+    postData('/journal', {date: data.main[0], weather: data.main[4], content: feelings})
+    updateUi();
+  })
 }
+
 //async fetch of weather data
 const getWeather = async (baseUrl, zip, apiKey) => {
   const res = await fetch(baseUrl+zip+apiKey)
@@ -43,4 +51,4 @@ const postData = async ( url = '', data = {}) => {
   }
 }
 
-postData('/journal', {weather: data.weather, feeling: data.feelings});
+postData('/journal', {weather: data.weather, feeling: feelings});
