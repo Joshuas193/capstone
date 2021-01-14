@@ -4,8 +4,8 @@ const express = require('express');
 // Starting an instance of the app using express
 const app = express();
 
-// Setting an empty JS object to act as an endpoint for all routes
-projectData = {};
+// Setting an empty JS array to act as an endpoint for all routes
+projectData = [];
 
 /* Middleware */
 // setting up body-parser as the middleware for express
@@ -28,10 +28,20 @@ const port = 8000;
 const server = app.listen(port, () => console.log(`Running on Localhost: ${port}`));
 
 //Setting up the POST request route
-app.post('/journal', (req, res) => {
-  projectData.push(req.body);
-  console.log(data);
-});
+app.post('/journal', addPost);
+
+function addPost (req, res) {
+  //creating an object from the req info
+  newEntry = {
+    date: req.body.date,
+    weather: req.body.weather,
+    feelings: req.body.content
+  }
+
+  projectData.push(newEntry);
+  res.send(projectData);
+  console.log(projectData);
+}
 
 //Setting up the GET request route
 app.get('/journal', (req, res) => {

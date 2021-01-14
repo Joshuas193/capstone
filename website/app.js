@@ -9,13 +9,14 @@ document.querySelector('#generate').addEventListener('click', createPost);
 function createPost() {
   const feelings = document.querySelector('#feelings').value;
   const zip = document.querySelector('#zip').value;
+  const dateNow = new Date().toLocaleDateString();
   getWeather(baseUrl, zip, apiKey)
   // Chaining promises
   .then(function(data) {
     console.log(data);
-    postData('/journal', {date: data.main[0], weather: data.main[4], content: feelings})
+    postData('/journal', {date: dateNow, weather: data.main.temp, content: feelings})
     updateUi();
-  })
+  });
 }
 
 //async fetch of weather data
@@ -23,7 +24,6 @@ const getWeather = async (baseUrl, zip, apiKey) => {
   const res = await fetch(baseUrl+zip+apiKey)
   try {
     const data = await res.json();
-    console.log(data);
     return data;
   } catch(error) {
     console.log('error', error);
@@ -33,7 +33,7 @@ const getWeather = async (baseUrl, zip, apiKey) => {
 //Setting up POST route
 const postData = async ( url = '', data = {}) => {
   console.log(data);
-  const response = await fetch(url, {
+  const response = await fetch('/journal', {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
@@ -45,10 +45,8 @@ const postData = async ( url = '', data = {}) => {
   try {
     const newData = await response.json();
     console.log(newData);
-    return newData
+    return newData;
   } catch(error) {
-    console.log('error', error)
+    console.log('error', error);
   }
 }
-
-postData('/journal', {weather: data.weather, feeling: feelings});
