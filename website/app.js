@@ -41,11 +41,22 @@ const postData = async ( url = '', data = {}) => {
     },
     body: JSON.stringify(data),
   });
-
   try {
     const newData = await response.json();
     console.log(newData);
     return newData;
+  } catch(error) {
+    console.log('error', error);
+  }
+}
+
+const updateUi = async () => {
+  const request = await fetch('/journal');
+  try {
+    const allData = await request.json();
+    document.getElementById('date').innerHTML = allData[0].date;
+    document.getElementById('temp').innerHTML = allData[0].weather;
+    document.getElementById('content').innerHTML = allData[0].feelings;
   } catch(error) {
     console.log('error', error);
   }
