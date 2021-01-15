@@ -15,8 +15,10 @@ function createPost() {
   .then(function(data) {
     console.log(data);
     postData('/journal', {date: dateNow, weather: data.main.temp, content: feelings})
-    updateUi();
-  });
+  })
+  .then(
+    updateUi()
+  )
 }
 
 //async fetch of weather data
