@@ -42,7 +42,7 @@ body{
 #date-header, #current-temp, #journal-entry {
   font-size: 1.2em;
   color: black;
-  text-shadow: 1px 1px 2px #f0d43a;
+  text-shadow: 1px 1px 1px #f0d43a;
 }
 
 #date, #temp, #content {
@@ -118,18 +118,21 @@ button:focus {
 /* Style for Placeholder Text*/
 ::placeholder { /* Firefox, Chrome, Opera */
   color: #f0d43a;
+  opacity: 0.6;
   text-shadow: 1px 1px 2px black;
   font-family: 'Oswald', sans-serif;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: #f0d43a;
+  opacity: 0.6;
   text-shadow: 1px 1px 2px black;
   font-family: 'Oswald', sans-serif;
 }
 
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: #f0d43a;
+  opacity: 0.6;
   text-shadow: 1px 1px 2px black;
   font-family: 'Oswald', sans-serif;
 }
