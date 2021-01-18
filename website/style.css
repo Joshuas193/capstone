@@ -17,32 +17,36 @@ body{
   grid-gap: 1em;
   font-size: 18px;
   font-family: 'Oswald', sans-serif;
+  padding-bottom: 50px;
 }
 
-.holder.feel {
-
+.holder.entry {
+  padding-bottom: 20px;
 }
 
 .entry{
   background: rgba(59, 74, 107, .4);
 }
 
-#entryHolder{
-  height: 30vh;
+#entry-holder{
+  height: 100%;
   width: 85vw;
-
+  padding-left: 10px;
+  background: #aaa;
 }
 
-#date{
-
+#date-header {
+  padding-top: 10px;
 }
 
-#temp{
-
+#date-header, #current-temp, #journal-entry {
+  font-size: 1.2em;
+  color: black;
+  text-shadow: 1px 1px 2px #f0d43a;
 }
 
-#content{
-
+#date, #temp, #content {
+  padding: 10px 0;
 }
 
 .headline {
@@ -54,18 +58,19 @@ body{
   border-bottom: 1px solid #ccc;
 }
 
-.holder.entry {
-  
-}
-
 .title{
-
+  background: #666;
+  color: #eee;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 3px #22b3da;
+  padding: 10px;
 }
 
 /* Basic Styling To Override Default For Basic HTML Elements */
 label{
   display:block;
   font-size: 27px;
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.7);
 }
 
 input{
