@@ -3,9 +3,6 @@ const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '&units=imperial&appid=c3674100cc3382bf47fccf8637a3e903';
 const dateNow = new Date().toLocaleDateString();
 
-// Adding an event listener to the generate button
-document.querySelector('#generate').addEventListener('click', createPost);
-
 // Callback function to create a post
 function createPost() {
   // Local variables
@@ -66,3 +63,5 @@ const updateUi = async () => {
     console.log('error', error);
   }
 }
+
+export { createPost };
