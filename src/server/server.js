@@ -1,7 +1,7 @@
 // Setting an empty JS object to act as an endpoint for all routes
 projectData = {};
 
-//Require and configure dotenv to use environemtn variables for secret information
+//Require and configure dotenv to use environment variables for secret information
 const dotenv = require('dotenv');
 dotenv.config();
 
