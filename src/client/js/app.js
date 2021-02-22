@@ -1,27 +1,25 @@
-// Global Variables
-const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?zip=';
-const apiKey = '&units=imperial&appid=c3674100cc3382bf47fccf8637a3e903';
-const dateNow = new Date().toLocaleDateString();
-
 // Callback function to create a post
 function createPost() {
   // Local variables
-  const zip = document.querySelector('#zip').value;
-  const feelings = document.querySelector('#feelings').value;
+  const city = document.querySelector('#city').value;
+  const encodedCity = encodeURIComponent(city);
+  console.log(encodedCity);
+  const baseUrl = `http://api.geonames.org/searchJSON?q=`;
+  const options = `${encodedCity}&maxRows=1&username=joshuas1411`;
   // Calling function to retrieve weather data
-  getWeather(baseUrl, zip, apiKey)
+  getData(baseUrl, options)
   // Chaining promises
   .then(function(data) {
     // calling funtion to POST data to server
-    postData('http://localhost:3000/addWeather', {date: dateNow, weather: data.main.temp, content: feelings});
+    postData('http://localhost:3000/addData', {  });
     // Calling the Update UI function
     updateUi();
   })
 }
 
 // Async fetch of weather data
-const getWeather = async (baseUrl, zip, apiKey) => {
-  const res = await fetch(baseUrl+zip+apiKey) //creating the API Key dynamically with user input
+const getData = async (baseUrl, options) => {
+  const res = await fetch(baseUrl+options) //creating the API Key dynamically with user input
   try {
     const data = await res.json();
     console.log(data);
@@ -36,9 +34,7 @@ const postData = async ( url = '', data = {}) => {
   const response = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   });
   try {

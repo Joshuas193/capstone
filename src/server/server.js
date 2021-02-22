@@ -40,7 +40,7 @@ app.get('/all', (req, res) => {
 });
 
 //POST a journal entry
-app.post('/addWeather', (req, res) => {
+app.post('/addData', (req, res) => {
   projectData = req.body;
   res.send(projectData);
 });
