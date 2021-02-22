@@ -13,7 +13,7 @@ function createPost() {
   // Chaining promises
   .then(function(data) {
     // calling funtion to POST data to server
-    postData('/addWeather', {date: dateNow, weather: data.main.temp, content: feelings});
+    postData('http://localhost:3000/addWeather', {date: dateNow, weather: data.main.temp, content: feelings});
     // Calling the Update UI function
     updateUi();
   })
@@ -52,7 +52,7 @@ const postData = async ( url = '', data = {}) => {
 
 // Async function to update the UI with the information from the user and from the API
 const updateUi = async () => {
-  const response = await fetch('/all');
+  const response = await fetch('http://localhost:3000/all');
   try {
     const allData = await response.json();
     console.log(allData)
