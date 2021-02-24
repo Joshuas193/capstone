@@ -4,7 +4,7 @@
   "description": "Travel and Weather app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node src/server/server.js",
     "build": "webpack --config webpack.prod.js",
     "dev": "webpack serve --config webpack.dev.js --open"

@@ -8,31 +8,18 @@
     <link rel="shortcut icon" href="#">
   </head>
   <body>
-    <div id = "app">
-      <div class ="holder headline">
-        Weather Journal App
-      </div>
-      <div class ="holder zip">
-        <label for="zip">Enter Zipcode here</label>
-        <input type="text" id="city" placeholder="Enter your destination city here">
-      </div>
-      <div class ="holder feel">
-        <label for="feelings">How are you feeling today?</label>
-        <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="8" cols="70"></textarea>
-        <button id="generate" type = "submit"> Generate </button>
-      </div>
-      <div class ="holder entry">
-        <div class = "title">Most Recent Entry</div>
-        <div id = "entry-holder">
-          <div id="date-header">Today's date is:</div>
-          <div id = "date"></div>
-          <div id="current-temp">The curent temperature in your area is:</div>
-          <div id = "temp"></div>
-          <div id="journal-entry">How you're feeling today:</div>
-          <div id = "content"></div>
-        </div>
-      </div>
-      </div>
-
+    <div class="holder headline">
+      <h1 id="logo">Travel Planner</h1>
+    </div>
+    <div class="city">
+      <label for="city">Enter Your Destination Here</label>
+      <input type="text" id="city" placeholder="Enter your destination city here">
+    </div>
+    <div class="departure">
+      <label for="departure">Enter your departure date</label>
+      <input type="text" id="departure" placeholder="mm/dd/yyyy"></textarea>
+      <button id="submit" type = "submit"> Submit </button>
+    </div>
+    <div class="countdown"></div>
   </body>
 </html>

@@ -11,7 +11,7 @@ function createPost() {
   // Chaining promises
   .then(function(data) {
     // calling funtion to POST data to server
-    postData('http://localhost:3000/addData', {  });
+    postData('http://localhost:3000/addData', { lat: data.geonames[0].lat, lng: data.geonames[0].lng, country: data.geonames[0].countryName });
     // Calling the Update UI function
     updateUi();
   })
@@ -27,6 +27,12 @@ const getData = async (baseUrl, options) => {
   } catch(error) {
     console.log('error', error);
   }
+}
+
+const createTimer = async (date) => {
+  const departure = document.querySelector('#departure').value;
+  console.log(departure);
+  const countDownDate = new Date(`${departure}`).getTime();
 }
 
 // Async setting up POST
@@ -52,9 +58,6 @@ const updateUi = async () => {
   try {
     const allData = await response.json();
     console.log(allData)
-    document.getElementById('date').innerHTML = allData.date;
-    document.getElementById('temp').innerHTML = allData.weather;
-    document.getElementById('content').innerHTML = allData.content;
   } catch(error) {
     console.log('error', error);
   }
