@@ -29,12 +29,6 @@ const getData = async (baseUrl, options) => {
   }
 }
 
-const createTimer = async (date) => {
-  const departure = document.querySelector('#departure').value;
-  console.log(departure);
-  const countDownDate = new Date(`${departure}`).getTime();
-}
-
 // Async setting up POST
 const postData = async ( url = '', data = {}) => {
   const response = await fetch(url, {
