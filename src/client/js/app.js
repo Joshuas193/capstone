@@ -1,13 +1,18 @@
+const city = document.querySelector('#city').value;
+const encodedCity = encodeURIComponent(city);
+const baseUrl = `http://api.geonames.org/searchJSON?q=`;
+const options = `${encodedCity}&maxRows=1&username=joshuas1411`;
+//const baseWeatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?`;
+//const weatherOptions = `units=I&days=7&lat=${lat}&lng=${lng}&API_KEY=9bd6b8d321a64509ad2a9dbc04fbebfc`;
+
 // Callback function to create a post
 function createPost() {
   // Local variables
-  const city = document.querySelector('#city').value;
-  const encodedCity = encodeURIComponent(city);
   console.log(encodedCity);
-  const baseUrl = `http://api.geonames.org/searchJSON?q=`;
-  const options = `${encodedCity}&maxRows=1&username=joshuas1411`;
   // Calling function to retrieve weather data
-  getData(baseUrl, options)
+  getData(baseUrl, options).then(
+    getWeather()
+  )
   // Chaining promises
   .then(function(data) {
     // calling funtion to POST data to server
