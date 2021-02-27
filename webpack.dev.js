@@ -9,6 +9,7 @@ module.exports = {
   },
   entry: "./src/client/index.js",
   output: {
+    path: path.resolve(__dirname, "dist"),
     libraryTarget: "var",
     library: "Client",
   },
@@ -40,6 +41,7 @@ module.exports = {
       // Automatically remove all unused webpack assets on rebuild
       cleanStaleWebpackAssets: true,
       protectWebpackAssets: false,
+      cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")]
     }),
   ],
 };
