@@ -1,16 +1,21 @@
 // Callback function to create a post from Index.js
-function createPost() {
-  //const baseWeatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?`;
-  //const weatherOptions = `units=I&days=7&lat=28.53834&lon=-81.37924&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
+const createPost = async () => {
+  const geoData = await getData();
+    console.log(geoData);
+    const baseWeatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?`;
+    const weatherOptions = `units=I&days=7&lat=${geoData.geonames[0].lat}&lon=${geoData.geonames[0].lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
+    const newUrl = baseWeatherUrl+weatherOptions
+    console.log(newUrl);
+      const weather = await getWeather(newUrl);
+        console.log(weather);
   // Calling function to retrieve geo data
-  getData()
     //.then(function(data) {
     // calling funtion to POST data to server
     //postData('http://localhost:3000/addData', { lat: data.geonames[0].lat, lng: data.geonames[0].lng, country: data.geonames[0].countryName });
     // Calling the Update UI function
     //updateUi();
     //}
-  };
+};
 
 // Async fetch of geographic data
 const getData = async () => {
@@ -25,7 +30,8 @@ const getData = async () => {
   return data;
 }
 
-const getWeather = async (newUrl) => {
+//Async fetch of weather data
+const getWeather = async newUrl => {
   const response = await fetch(newUrl);
   const weatherData = await response.json();
   console.log(weatherData);
