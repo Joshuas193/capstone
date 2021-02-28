@@ -36,11 +36,11 @@ app.listen(port, () => {
 //Setting up the GET request route
 app.get('/all', (req, res) => {
   res.send(projectData);
-  console.log(projectData);
 });
 
 //POST a journal entry
 app.post('/addData', (req, res) => {
   projectData = req.body;
+  console.log(projectData);
   res.send(projectData);
 });
