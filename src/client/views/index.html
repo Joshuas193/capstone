@@ -11,15 +11,19 @@
     <div class="headline">
       <h1 id="logo">Travel Planner</h1>
     </div>
-    <div class="city">
-      <label for="city">Enter Your Destination Here</label>
-      <input type="text" id="city" placeholder="Enter your destination city here">
-    </div>
-    <div class="departure">
-      <label for="departure">Enter your departure date and time</label>
-      <input type="datetime-local" id="departure">
-      <button id="submit" type = "submit"> Submit </button>
-    </div>
-    <div id="countdown"></div>
+      <form class="user-data">
+        <div class="city">
+          <label for="city">Enter Your Destination Here</label>
+          <input type="text" id="city" placeholder="Enter your destination city here">
+        </div>
+        <div class="departure">
+          <label for="departure">Enter your departure date and time</label>
+          <input type="datetime-local" id="departure">
+          <button id="submit" type = "submit"> Submit </button>
+        </div>
+      </form>
+      <div id="destination-photo">Photo Area</div>
+      <div id="weather-data">Weather Data Area</div>
+    <div id="countdown">Countdown Area</div>
   </body>
 </html>

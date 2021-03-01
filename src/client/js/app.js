@@ -1,5 +1,6 @@
 //Callback function to create a post from Index.js
-const createPost = async () => {
+const createPost = async e => {
+  e.preventDefault();
   const city = document.querySelector("#city").value;
   const encodedCity = encodeURIComponent(city);
   const baseUrl = `http://api.geonames.org/searchJSON?q=`;
@@ -22,7 +23,7 @@ const createPost = async () => {
       high: weather.data[0].high_temp,
       low: weather.data[0].low_temp,
       weather: weather.data[0].weather.description,
-      image: data.hits[0].largeImageURL,
+      image: data.hits[0].largeImageURL
     });
     //Calling the Update UI function
     //updateUi();
@@ -45,7 +46,7 @@ const getWeather = async newUrl => {
   return weatherData;
 };
 
-//Async fecth of pictures
+//Async fecth of destination photo
 const getPhotos = async photoUrl => {
   const photoRes = await fetch(photoUrl); //Creating the API Key dynamically with user input
   const photoData = await photoRes.json();

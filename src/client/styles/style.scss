@@ -1,10 +1,29 @@
+//Color Palette Variables
 $white: #FFF;
 $platinum: #E5E5E5;
 $orange-web: #FCA311;
 $oxford-blue: #14213D;
 $black: #000;
+//Text Shadow Variables
 $text-shadow-outline: -1px 0 $black, 0 1px $black, 1px 0 $black, -1px 0 $black;
 $text-shadow-light: 2px 2px 5px rgba($white, 0.8);
+//Screen Size Breakpoints
+$screen-medium: 550px;
+$screen-large: 1100px;
+
+//Mixins for Media Queries
+@mixin md {
+  @media (min-width: #{$screen-medium}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$screen-large}) {
+    @content;
+  }
+}
+
 
 html {
   background: $white;
@@ -16,10 +35,21 @@ body {
 }
 
 #logo {
+  display: flex;
+  justify-content: center;
   background: $oxford-blue;
   color: $orange-web;
-  font-size: 5em;
+  font-size: 2.75em;
   margin-top: 0;
   padding: 2rem;
   text-shadow: $text-shadow-outline, $text-shadow-light;
+
+  @include md {
+    font-size: 4.5em;
+  }
+
+  @include lg {
+    display: block;
+    font-size: 6em;
+  }
 }
