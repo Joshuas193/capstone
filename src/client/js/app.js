@@ -12,7 +12,7 @@ const createPost = async e => {
   const newUrl = baseWeatherUrl + weatherOptions;
   const weather = await getWeather(newUrl);
   const basePhotoUrl = `https://pixabay.com/api/?key=20255622-d1761b0f153bb43efa0b79842&`;
-  const photoOptions = `q=${encodedCity}&image_type=photo&orientation=horizontal`;
+  const photoOptions = `q=${encodedCity}&image_type=photo&orientation=horizontal&category=travel`;
   const photoUrl = basePhotoUrl + photoOptions;
   const photo = await getPhotos(photoUrl).then(function (data) {
     //Calling funtion to POST data to server
@@ -20,13 +20,15 @@ const createPost = async e => {
       lat: geoData.geonames[0].lat,
       lng: geoData.geonames[0].lng,
       country: geoData.geonames[0].countryName,
+      cityName: weather.city_name,
       high: weather.data[0].high_temp,
       low: weather.data[0].low_temp,
       weather: weather.data[0].weather.description,
       image: data.hits[0].largeImageURL
-    });
+    }).then(function(){
     //Calling the Update UI function
-    //updateUi();
+      updateUi();
+    });
   });
 };
 
@@ -71,15 +73,14 @@ const postData = async (url = "", data = {}) => {
   }
 };
 
-/* Async function to update the UI with the information from the user and from the API
+// Async function to update the UI with the information from the user and from the API
 const updateUi = async () => {
   const response = await fetch('http://localhost:3000/all');
-  try {
-    const allData = await response.json();
-    console.log(allData)
-  } catch(error) {
-    console.log('error', error);
-  }
-}*/
+  const allData = await response.json();
+  console.log(allData);
+  const photoCode = `<img src="${allData.image}" alt="Photo of ${allData.cityName}">`;
+  const photoDiv = document.querySelector("#destination-photo");
+  photoDiv.insertAdjacentHTML("afterbegin", photoCode);
+}
 
 export { createPost };

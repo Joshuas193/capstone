@@ -17,7 +17,7 @@ const createTimer = async () => {
     let minutes = Math.floor((remainder % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((remainder % (1000 * 60)) / 1000);
     // Inserting the countdown timer into the HTML document
-    document.querySelector('#countdown').innerHTML = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`
+    document.querySelector('#countdown').innerHTML = `Your Vacation Starts in: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`
     //if the countdown is finished, write some text
     if (remainder < 0) {
       clearInterval(i);
