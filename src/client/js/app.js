@@ -26,7 +26,7 @@ const createPost = async e => {
       weather: weather.data[0].weather.description,
       image: data.hits[0].largeImageURL
     }).then(function(){
-    //Calling the Update UI function
+    //Calling the functions to dynamicalkly update content
       updateUi();
     });
   });
@@ -78,6 +78,10 @@ const updateUi = async () => {
   const response = await fetch('http://localhost:3000/all');
   const allData = await response.json();
   console.log(allData);
+  document.querySelector("#default-image").style.display = "none";
+  document.querySelector("#destination-photo").style.display = "show";
+  const photoMessage = document.querySelector("#countdown-message");
+  photoMessage.innerHTML = `Your trip to ${allData.cityName} starts in:`;
   const photoCode = `<img src="${allData.image}" alt="Photo of ${allData.cityName}">`;
   const photoDiv = document.querySelector("#destination-photo");
   photoDiv.insertAdjacentHTML("afterbegin", photoCode);
