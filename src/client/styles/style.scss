@@ -56,12 +56,28 @@ body {
 #destination-photo, #default-image {
   display: flex;
   justify-content: center;
-  width: 90%;
+  width: 95%;
   height: auto;
   margin: 1rem auto;
 
   img {
     max-width: 100%;
-    max-height: 40vh;
+    max-height: 50vh;
+  }
+}
+
+#pixabay {
+  display: flex;
+  flex-direction: row;
+  font-size: 0.85em;
+
+  p {
+    margin: 0 .25rem;
+  }
+
+  a img {
+    width: 60px;
+    height: auto;
+    margin-top: 0.1rem;
   }
 }

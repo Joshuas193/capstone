@@ -1,5 +1,5 @@
 //Callback function to create a post from Index.js
-const createPost = async e => {
+async function createPost(e){
   e.preventDefault();
   const city = document.querySelector("#city").value;
   const encodedCity = encodeURIComponent(city);
@@ -82,7 +82,12 @@ const updateUi = async () => {
   document.querySelector("#destination-photo").style.display = "show";
   const photoMessage = document.querySelector("#countdown-message");
   photoMessage.innerHTML = `Your trip to ${allData.cityName} starts in:`;
-  const photoCode = `<img src="${allData.image}" alt="Photo of ${allData.cityName}">`;
+  const photoCode = `<figure>
+                      <img src="${allData.image}" alt="Photo of ${allData.cityName}">
+                      <figcaption id="pixabay">
+                        <p>Image courtesy of:</p> <a href="https://pixabay.com/">Pixabay</a>
+                      </figcaption>
+                     </figure>`;
   const photoDiv = document.querySelector("#destination-photo");
   photoDiv.insertAdjacentHTML("afterbegin", photoCode);
 }
