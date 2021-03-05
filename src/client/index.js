@@ -4,9 +4,20 @@ import Icon from "./assets/pixabay_logo.png";
 import "./styles/normalize.scss";
 import "./styles/style.scss";
 
+// Setting elements to be visible on load or not
 window.onload = () => {
-  document.querySelector("#default-image").style.display = "show";
+  document.querySelector("#default-image").style.display = "block";
+  document.querySelector("#user-data").style.display = "none";
 };
+
+//Event listener for Add a Trip button
+document.querySelector("#add-trip").addEventListener("click", () => {formUiUpdate()});
+
+// Function to make the button invisible after clicking
+function formUiUpdate() {
+  document.querySelector("#add-trip").style.display = "none";
+  document.querySelector("#user-data").style.display = "block";
+}
 
 // Adding an event listener to the generate button
 document.querySelector('#submit').addEventListener('click', createPost);
@@ -18,4 +29,4 @@ const figC = document.querySelector("#pixabay");
 const imgCode = `<p>Image courtesy of:</p> <a href="https://pixabay.com/"><img src="${Icon}" alt="Pixabay Logo"></a>`;
 figC.innerHTML = imgCode;
 
-export { createPost, createTimer, Icon };
+export { createPost, createTimer };

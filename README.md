@@ -3,7 +3,7 @@ This is the final project for my Fron-End Nano-Degree. IN this project I will us
 This will gather weather for the time the trip is planned and for the destination the usre wishes to go to.
 
 ### Pixabay License
-The photos used in this project are form Pixabay. [Link](https://pixabay.com/service/license/) to their License.
+The photos used in this project are form Pixabay. [Link](https://pixabay.com/service/license/) to see their License.
 
 ### Dependency List
 Dependancies are located in the package.json file as well. Here is the list.

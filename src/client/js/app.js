@@ -1,6 +1,7 @@
-//Callback function to create a post from Index.js
+// Callback function to create a post from Index.js
 async function createPost(e){
   e.preventDefault();
+  document.querySelector("#user-data").style.display = "none";
   const city = document.querySelector("#city").value;
   const encodedCity = encodeURIComponent(city);
   const baseUrl = `http://api.geonames.org/searchJSON?q=`;
@@ -15,7 +16,7 @@ async function createPost(e){
   const photoOptions = `q=${encodedCity}&image_type=photo&orientation=horizontal&category=travel`;
   const photoUrl = basePhotoUrl + photoOptions;
   const photo = await getPhotos(photoUrl).then(function (data) {
-    //Calling funtion to POST data to server
+    // Calling funtion to POST data to server
     postData("http://localhost:3000/addData", {
       lat: geoData.geonames[0].lat,
       lng: geoData.geonames[0].lng,
@@ -26,31 +27,32 @@ async function createPost(e){
       weather: weather.data[0].weather.description,
       image: data.hits[0].largeImageURL
     }).then(function(){
-    //Calling the functions to dynamicalkly update content
-      updateUi();
+    // Calling the functions to dynamically update content
+      updateUiPhoto();
+      updateWeatherUi();
     });
   });
 };
 
-//Async fetch of geographic data
+// Async fetch of geographic data
 const getData = async url => {
-  const res = await fetch(url); //Creating the API Key dynamically with user input
+  const res = await fetch(url); // Creating the API Key dynamically with user input
   const data = await res.json();
   console.log(data);
   return data;
 };
 
-//Async fetch of weather data
+// Async fetch of weather data
 const getWeather = async newUrl => {
-  const response = await fetch(newUrl); //Creating the API Key dynamically with user input
+  const response = await fetch(newUrl); // Creating the API Key dynamically with user input
   const weatherData = await response.json();
   console.log(weatherData);
   return weatherData;
 };
 
-//Async fecth of destination photo
+// Async fecth of destination photo
 const getPhotos = async photoUrl => {
-  const photoRes = await fetch(photoUrl); //Creating the API Key dynamically with user input
+  const photoRes = await fetch(photoUrl); // Creating the API Key dynamically with user input
   const photoData = await photoRes.json();
   console.log(photoData);
   return photoData;
@@ -74,22 +76,27 @@ const postData = async (url = "", data = {}) => {
 };
 
 // Async function to update the UI with the information from the user and from the API
-const updateUi = async () => {
+const updateUiPhoto = async () => {
   const response = await fetch('http://localhost:3000/all');
   const allData = await response.json();
   console.log(allData);
   document.querySelector("#default-image").style.display = "none";
-  document.querySelector("#destination-photo").style.display = "show";
   const photoMessage = document.querySelector("#countdown-message");
   photoMessage.innerHTML = `Your trip to ${allData.cityName} starts in:`;
-  const photoCode = `<figure>
-                      <img src="${allData.image}" alt="Photo of ${allData.cityName}">
-                      <figcaption id="pixabay">
-                        <p>Image courtesy of:</p> <a href="https://pixabay.com/">Pixabay</a>
-                      </figcaption>
-                     </figure>`;
-  const photoDiv = document.querySelector("#destination-photo");
+  const photoCode = `<img src="${allData.image}" alt="Photo of ${allData.cityName}">`;
+  const photoDiv = document.querySelector("#images");
   photoDiv.insertAdjacentHTML("afterbegin", photoCode);
+}
+
+const updateWeatherUi = async () => {
+  const response = await fetch('http://localhost:3000/all');
+  const allData = await response.json();
+  console.log(allData);
+  const weatherDiv = document.querySelector("#weather-data");
+  const message = `<p>Typical weather for the date of your trip is:</p>
+                   <p>High: ${allData.high}&deg; Low: ${allData.low}&deg;</p>
+                   <p>${allData.weather}</p>`
+  weatherDiv.insertAdjacentHTML("afterbegin", message);
 }
 
 export { createPost };
