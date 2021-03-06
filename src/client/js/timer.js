@@ -1,5 +1,5 @@
 // Function to create a countdown timer.
-//Inspiration for this function from https://www.w3schools.com/howto/howto_js_countdown.asp
+// Inspiration for this function from https://www.w3schools.com/howto/howto_js_countdown.asp
 const createTimer = async () => {
   const departure = document.querySelector("#departure").value;
   console.log(departure);

@@ -1,17 +1,20 @@
-//Color Palette Variables
+// Color Palette Variables
 $white: #FFF;
 $platinum: #E5E5E5;
 $orange-web: #FCA311;
 $oxford-blue: #14213D;
 $black: #000;
-//Text Shadow Variables
+// Font Families
+$serif: 'DM Serif Text', serif;
+$sans: 'Nunito Sans', sans-serif;
+// Text Shadow Variables
 $text-shadow-outline: -1px 0 $black, 0 1px $black, 1px 0 $black, -1px 0 $black;
 $text-shadow-light: 2px 2px 5px rgba($white, 0.8);
-//Screen Size Breakpoints
+// Screen Size Breakpoints
 $screen-medium: 550px;
 $screen-large: 1100px;
 
-//Mixins for Media Queries for medium and large screens
+// Mixins for Media Queries for medium and large screens
 @mixin md {
   @media (min-width: #{$screen-medium}) {
     @content;
@@ -42,14 +45,15 @@ body {
   margin: 0;
   padding: 2rem;
   text-shadow: $text-shadow-outline, $text-shadow-light;
-  //Styling change for medium screens for the logo element using the mixin created above
+  // Styling change for medium screens for the logo element using the mixin created above
   @include md {
     font-size: 4.5em;
   }
-  //Styling change for larger screens for the logo element using the mixin created above
+  // Styling change for larger screens for the logo element using the mixin created above
   @include lg {
     display: block;
     font-size: 6em;
+    padding-left: 3.33rem;
   }
 }
 
@@ -65,7 +69,11 @@ body {
     max-height: 50vh;
 
     @include md {
-      max-height: 40vh;
+      max-height: 55vh;
+    }
+
+    @include lg {
+      max-height: 60vh;
     }
   }
 
@@ -75,8 +83,9 @@ body {
   }
 
   @include lg {
-    width: 98%;
+    width: 50%;
     justify-content: left;
+    margin: 2.66rem 0 1rem 0.90rem;
   }
 }
 
@@ -95,3 +104,32 @@ body {
     margin-top: 0.15rem;
   }
 }
+
+#trip-button {
+  display: flex;
+  justify-content: center;
+
+  @include lg {
+    justify-content: left;
+    margin-left: 3.33rem;
+  }
+}
+
+#add-trip {
+  font-family: $serif;
+  font-size: 40px;
+  padding : 2rem;
+  border: 3px solid $oxford-blue;
+  border-radius: 25px;
+  background-color: rgba($orange-web, 0.6);
+  margin-top: 150px;
+}
+
+#user-data {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 95%;
+  margin: 0 auto 0 3.33em;
+}
+

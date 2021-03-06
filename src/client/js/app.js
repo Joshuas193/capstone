@@ -8,9 +8,21 @@ async function createPost(e){
   const options = `${encodedCity}&maxRows=1&username=joshuas1411`;
   const url = baseUrl + options;
   const geoData = await getData(url);
+  const departure = document.querySelector("#departure").value;
+  const countDownDate = new Date(`${departure}`).getTime();
+  let yyyy = new Date(`${departure}`).getFullYear();
+  let mm = new Date(`${departure}`).getMonth() + 1;
+  let dd = new Date(`${departure}`).getDate();
+  let now = new Date().getTime();
+  let remainder = countDownDate - now;
+  let days = Math.floor(remainder / (1000 * 60 * 60 * 24));
+  const dateFormat = `${yyyy}-${mm}-${dd}`;
+  const endDateFormat = `${yyyy}-${mm}-${dd+1}`
   const baseWeatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?`;
   const weatherOptions = `units=I&days=7&lat=${geoData.geonames[0].lat}&lon=${geoData.geonames[0].lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
-  const newUrl = baseWeatherUrl + weatherOptions;
+  const historicalWeatherUrl = `https://api.weatherbit.io/v2.0/history/daily?`;
+  const historicalWeatherOptions = `units=I&start_date=${dateFormat}&end_date=${endDateFormat}&lat=${geoData.geonames[0].lat}&lon=${geoData.geonames[0].lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
+  const newUrl = (days <= 16) ? (baseWeatherUrl + weatherOptions) : (historicalWeatherUrl+historicalWeatherOptions);
   const weather = await getWeather(newUrl);
   const basePhotoUrl = `https://pixabay.com/api/?key=20255622-d1761b0f153bb43efa0b79842&`;
   const photoOptions = `q=${encodedCity}&image_type=photo&orientation=horizontal&category=travel`;
