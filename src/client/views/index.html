@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>Travel Planner</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Nunito+Sans:wght@200;400;700&display=swap">
     <!-- The below link is to get rid of the Favicon error in the Console -->
     <link rel="shortcut icon" href="#">
@@ -24,12 +22,12 @@
         <button id="add-trip" type="button"> Add a Trip </button>
       </div>
       <form id="user-data">
-        <div class="city">
-          <label for="city">Enter Your Destination Here</label><br>
+        <div id="city-div">
+          <label for="city">Where would you like to go for vacation?</label><br>
           <input type="text" id="city" placeholder="Enter your destination city here">
         </div>
-        <div class="departure">
-          <label for="departure">Enter your departure date and time</label><br>
+        <div id="departure-div">
+          <label for="departure">Click the calendar<br>to enter your Departure Date.</label><br>
           <input type="datetime-local" id="departure"><br>
           <button id="submit" type ="submit"> Submit </button>
         </div>

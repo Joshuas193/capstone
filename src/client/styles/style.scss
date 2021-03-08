@@ -41,7 +41,8 @@ body {
   justify-content: center;
   background: $oxford-blue;
   color: $orange-web;
-  font-size: 2.75em;
+  font-size: 3em;
+  font-family: $serif;
   margin: 0;
   padding: 2rem;
   text-shadow: $text-shadow-outline, $text-shadow-light;
@@ -115,21 +116,34 @@ body {
   }
 }
 
-#add-trip {
-  font-family: $serif;
-  font-size: 40px;
+#add-trip, #submit{
+  font-weight: 700;
+  font-size: 2em;
+  font-family: $sans;
+  width: 50%;
   padding : 2rem;
   border: 3px solid $oxford-blue;
   border-radius: 25px;
-  background-color: rgba($orange-web, 0.6);
+  background-color: rgba($orange-web, 0.7);
   margin-top: 150px;
+}
+
+#submit {
+  margin-top: 50px;
 }
 
 #user-data {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  width: 95%;
-  margin: 0 auto 0 3.33em;
+  width: 75vw;
+  margin: 0 auto;
 }
 
+
+label, input {
+  font-size: 2em;
+  font-family: $serif;
+  min-width: 75vw;
+  margin: 0 0 1rem 0;
+}
