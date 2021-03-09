@@ -106,7 +106,7 @@ const updateWeatherUi = async () => {
   console.log(allData);
   const weatherDiv = document.querySelector("#weather-data");
   const message = `<p>Typical weather for the date of your trip is:</p>
-                   <p>High: ${allData.high}&deg; Low: ${allData.low}&deg;</p>
+                   <p>High: ${allData.high}&deg;F Low: ${allData.low}&deg;F</p>
                    <p>${allData.weather}</p>`
   weatherDiv.insertAdjacentHTML("afterbegin", message);
 }

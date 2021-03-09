@@ -43,7 +43,7 @@ body {
   color: $orange-web;
   font-size: 3em;
   font-family: $serif;
-  margin: 0;
+  margin: 0 0 2.83rem 0;
   padding: 2rem;
   text-shadow: $text-shadow-outline, $text-shadow-light;
   // Styling change for medium screens for the logo element using the mixin created above
@@ -58,13 +58,14 @@ body {
   }
 }
 
+//Photo container
 #photo-div {
   display: flex;
   justify-content: center;
   width: 100%;
   height: auto;
   margin: 1rem auto;
-
+  // Photo Styling
   img {
     max-width: 100%;
     max-height: 50vh;
@@ -77,7 +78,7 @@ body {
       max-height: 60vh;
     }
   }
-
+  // Medium and larger screens for photo container
   @include md {
     width: 95%;
     margin: 1.25rem auto
@@ -90,6 +91,7 @@ body {
   }
 }
 
+// Pixabay Icon Styles
 #pixabay {
   display: flex;
   flex-direction: row;
@@ -116,6 +118,7 @@ body {
   }
 }
 
+// Button Styling
 #add-trip, #submit{
   font-weight: 700;
   font-size: 2em;
@@ -132,6 +135,7 @@ body {
   margin-top: 50px;
 }
 
+// Form container styling
 #user-data {
   display: flex;
   flex-direction: column;
@@ -140,10 +144,21 @@ body {
   margin: 0 auto;
 }
 
-
+// Form label and input styling
 label, input {
   font-size: 2em;
   font-family: $serif;
   min-width: 75vw;
   margin: 0 0 1rem 0;
+}
+
+#countdown-div, #weather-data {
+  width: 85%;
+  margin: 1rem auto;
+}
+
+#countdown-message, #countdown-timer, #weather-data p {
+  font-size: 3em;
+  font-family: $serif;
+  min-width: 75vw;
 }
