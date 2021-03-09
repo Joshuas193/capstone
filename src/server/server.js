@@ -44,3 +44,12 @@ app.post('/addData', (req, res) => {
   console.log(projectData);
   res.send(projectData);
 });
+
+lat: geoData.geonames[0].lat,
+lng: geoData.geonames[0].lng,
+country: geoData.geonames[0].countryName,
+cityName: weather.city_name,
+high: weather.data[0].high_temp,
+low: weather.data[0].low_temp,
+weather: weather.data[0].weather.description,
+image: data.hits[0].largeImageURL
