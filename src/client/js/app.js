@@ -9,10 +9,11 @@ async function createPost(e) {
   const newUrl = await weatherApiBuilder(
     geoData.geonames[0].lat,
     geoData.geonames[0].lng,
-    dateFormat,
-    endDateFormat.endDateFormat,
-    endDateFormat.days
+    dateFormat.dateFormat,
+    endDateFormat,
+    dateFormat.days
   );
+  console.log(newUrl)
   const weather = await getWeather(newUrl);
   const photoUrl = await photoUrlBuilder(url.encodedCity);
   const photo = await getPhotos(photoUrl).then(function (data) {
@@ -30,7 +31,7 @@ const urlBuilder = async () => {
   const city = document.querySelector("#city").value;
   const encodedCity = encodeURIComponent(city);
   const baseUrl = `http://api.geonames.org/searchJSON?q=`;
-  const options = `${encodedCity}&maxRows=10&username=joshuas1411`;
+  const options = `${encodedCity}&maxRows=1&username=joshuas1411`;
   const url = baseUrl + options;
   return { encodedCity, url };
 };
@@ -43,21 +44,9 @@ const getData = async (url) => {
   return data;
 };
 
-// Async function to create a date format foir historic weather data
+// Async function to create a date format for historic weather data
 const departureDate = async () => {
   const departure = document.querySelector("#departure").value;
-  const countDownDate = new Date(`${departure}`).getTime();
-  let yyyy = new Date(`${departure}`).getFullYear();
-  let mm = new Date(`${departure}`).getMonth() + 1;
-  let dd = new Date(`${departure}`).getDate();
-  const dateFormat = `${yyyy}-${mm}-${dd}`;
-  console.log(dateFormat);
-  return dateFormat;
-};
-
-// Async function to create a date format foir historic weather data
-const returnDate = async () => {
-  const departure = document.querySelector("#return-date").value;
   const countDownDate = new Date(`${departure}`).getTime();
   let yyyy = new Date(`${departure}`).getFullYear();
   let mm = new Date(`${departure}`).getMonth() + 1;
@@ -65,13 +54,23 @@ const returnDate = async () => {
   let now = new Date().getTime();
   let remainder = countDownDate - now;
   let days = Math.floor(remainder / (1000 * 60 * 60 * 24));
+  const dateFormat = `${yyyy}-${mm}-${dd}`;
+  return { dateFormat, days};
+};
+
+// Async function to create a date format for historic weather data
+const returnDate = async () => {
+  const returnDate = document.querySelector("#return-date").value;
+  let yyyy = new Date(`${returnDate}`).getFullYear();
+  let mm = new Date(`${returnDate}`).getMonth() + 1;
+  let dd = new Date(`${returnDate}`).getDate();
   const endDateFormat = `${yyyy}-${mm}-${dd}`;
-  return { days, endDateFormat };
+  return endDateFormat;
 };
 
 const weatherApiBuilder = async (lat, lng, dateFormat, endDateFormat, days) => {
   const baseWeatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?`;
-  const weatherOptions = `units=I&days=7&lat=${lat}&lon=${lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
+  const weatherOptions = `units=I&days=${days}&lat=${lat}&lon=${lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
   const historicalWeatherUrl = `https://api.weatherbit.io/v2.0/history/daily?`;
   const historicalWeatherOptions = `units=I&start_date=${dateFormat}&end_date=${endDateFormat}&lat=${lat}&lon=${lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
   const newUrl =
@@ -82,14 +81,14 @@ const weatherApiBuilder = async (lat, lng, dateFormat, endDateFormat, days) => {
 };
 
 // Async fetch of weather data
-const getWeather = async (newUrl) => {
+const getWeather = async newUrl => {
   const response = await fetch(newUrl); // Creating the API Key dynamically with user input
   const weatherData = await response.json();
   console.log(weatherData);
   return weatherData;
 };
 
-const photoUrlBuilder = async (encodedCity) => {
+const photoUrlBuilder = async encodedCity => {
   const basePhotoUrl = `https://pixabay.com/api/?key=20255622-d1761b0f153bb43efa0b79842&`;
   const photoOptions = `q=${encodedCity}&image_type=photo&orientation=horizontal&category=travel`;
   const photoUrl = basePhotoUrl + photoOptions;
