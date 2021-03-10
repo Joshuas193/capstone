@@ -55,10 +55,10 @@ const departureDate = async () => {
   let remainder = countDownDate - now;
   let days = Math.floor(remainder / (1000 * 60 * 60 * 24));
   const dateFormat = `${yyyy}-${mm}-${dd}`;
-  return { dateFormat, days};
+  return { dateFormat, days, departure};
 };
 
-// Async function to create a date format for historic weather data
+// Async function to create a return date format for historic weather data
 const returnDate = async () => {
   const returnDate = document.querySelector("#return-date").value;
   let yyyy = new Date(`${returnDate}`).getFullYear();
@@ -133,6 +133,7 @@ const updateUiPhoto = async () => {
   photoDiv.insertAdjacentHTML("afterbegin", photoCode);
 };
 
+// Async function to update the weather div with information
 const updateWeatherUi = async () => {
   const response = await fetch("http://localhost:3000/all");
   const allData = await response.json();
