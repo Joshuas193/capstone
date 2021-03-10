@@ -12,7 +12,7 @@ $text-shadow-outline: -1px 0 $black, 0 1px $black, 1px 0 $black, -1px 0 $black;
 $text-shadow-light: 2px 2px 5px rgba($white, 0.8);
 // Screen Size Breakpoints
 $screen-medium: 550px;
-$screen-large: 1100px;
+$screen-large: 1000px;
 
 // Mixins for Media Queries for medium and large screens
 @mixin md {
@@ -41,7 +41,7 @@ body {
   justify-content: center;
   background: $oxford-blue;
   color: $orange-web;
-  font-size: 3em;
+  font-size: 2.5em;
   font-family: $serif;
   margin: 0 0 2.83rem 0;
   padding: 2rem;
@@ -121,18 +121,32 @@ body {
 // Button Styling
 #add-trip, #submit{
   font-weight: 700;
-  font-size: 2em;
+  font-size: 1.33em;
   font-family: $sans;
-  width: 50%;
+  width: 60%;
   padding : 2rem;
-  border: 3px solid $oxford-blue;
+  border: 4px solid $oxford-blue;
   border-radius: 25px;
   background-color: rgba($orange-web, 0.7);
   margin-top: 150px;
+
+  @include md {
+    width: 35%;
+    font-size: 1.66em;
+  }
+
+  @include lg {
+    width: 30%;
+  }
 }
 
 #submit {
-  margin-top: 50px;
+  margin: 5rem 0 0 1rem;
+  padding: 2rem 3rem;
+
+  @include md {
+    margin-left: 7rem;
+  }
 }
 
 // Form container styling
@@ -140,21 +154,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: baseline;
-  width: 75vw;
+  width: 90%;
   margin: 0 auto;
+}
+
+#city-div, #departure-div {
+  width: 100%;
 }
 
 // Form label and input styling
 label, input {
-  font-size: 2em;
+  display: block;
+  font-size: 1em;
   font-family: $serif;
-  min-width: 75vw;
-  margin: 0 0 1rem 0;
+  width: 95%;
+  margin: 0 auto;
+  padding: 0.33rem;
+
+  @include md {
+    width: 70%;
+  }
+}
+
+input {
+  margin-bottom: 1rem;
 }
 
 #countdown-div, #weather-data {
   width: 85%;
-  margin: 1rem auto;
 }
 
 #countdown-message, #countdown-timer, #weather-data p {
