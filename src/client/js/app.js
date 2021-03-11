@@ -5,7 +5,7 @@ async function createPost(e) {
   const url = await urlBuilder();
   const geoData = await getData(url.url);
   const dateFormat = await departureDate();
-  const endDateFormat = await returnDate();
+  const endDateFormat = await returnDate(dateFormat.departure);
   const newUrl = await weatherApiBuilder(
     geoData.geonames[0].lat,
     geoData.geonames[0].lng,
@@ -59,11 +59,11 @@ const departureDate = async () => {
 };
 
 // Async function to create a return date format for historic weather data
-const returnDate = async () => {
+const returnDate = async departure => {
   const returnDate = document.querySelector("#return-date").value;
   let yyyy = new Date(`${returnDate}`).getFullYear();
   let mm = new Date(`${returnDate}`).getMonth() + 1;
-  let dd = new Date(`${returnDate}`).getDate();
+  let dd = new Date(`${departure}`).getDate() + 1;
   const endDateFormat = `${yyyy}-${mm}-${dd}`;
   return endDateFormat;
 };

@@ -1,45 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Planner</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Nunito+Sans:wght@200;400;700&display=swap">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Nunito+Sans:wght@200;400;700&display=swap"
+    />
     <!-- The below link is to get rid of the Favicon error in the Console -->
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="#" />
   </head>
   <body>
     <div class="headline">
       <h1 id="logo">Travel Planner</h1>
     </div>
-      <div id="photo-div">
-        <figure id="images">
-          <img id="default-image" src="https://cdn.pixabay.com/photo/2017/10/10/07/48/beach-2836300_1280.jpg" alt="Beach Photo">
-          <figcaption id="pixabay"></figcaption>
-        </figure>
+    <div id="photo-div">
+      <figure id="images">
+        <img
+          id="default-image"
+          src="https://cdn.pixabay.com/photo/2017/10/10/07/48/beach-2836300_1280.jpg"
+          alt="Beach Photo"
+        />
+        <figcaption id="pixabay"></figcaption>
+      </figure>
+    </div>
+    <div id="trip-button">
+      <button id="add-trip" type="button">Add a Trip</button>
+    </div>
+    <form id="user-data">
+      <div id="city-div">
+        <label for="city">Where would you like to go?</label>
+        <input
+          type="text"
+          id="city"
+          placeholder="Enter destination city here"
+        />
       </div>
-      <div id="trip-button">
-        <button id="add-trip" type="button"> Add a Trip </button>
+      <div id="departure-div">
+        <label for="departure"
+          >Click the Calendar<br />To enter your Departure Date.</label
+        >
+        <input type="datetime-local" id="departure" />
+        <label for="return-date">When will be returning?</label>
+        <input type="datetime-local" id="return-date" />
+        <button id="submit" type="submit">Submit</button>
       </div>
-      <form id="user-data">
-        <div id="city-div">
-          <label for="city">Where would you like to go?</label>
-          <input type="text" id="city" placeholder="Enter destination city here">
-        </div>
-        <div id="departure-div">
-          <label for="departure">Click the Calendar<br>To enter your Departure Date.</label>
-          <input type="datetime-local" id="departure">
-          <label for="return-date">When will be returning?</label>
-          <input type="datetime-local" id="return-date">
-          <button id="submit" type ="submit"> Submit </button>
-        </div>
-      </form>
-      <div id="countdown-div">
-        <div id="countdown-message"></div>
-        <div id="countdown-timer"></div>
-      </div>
-      <div id="weather-data"></div>
-    <footer id="footer">
-    </footer>
+    </form>
+    <div id="countdown-div">
+      <div id="countdown-message"></div>
+      <div id="countdown-timer"></div>
+    </div>
+    <div id="weather-data"></div>
+    <footer id="footer"></footer>
   </body>
 </html>

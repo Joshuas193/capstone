@@ -80,7 +80,7 @@ body {
   }
   // Medium and larger screens for photo container
   @include md {
-    width: 95%;
+    width: 85%;
     margin: 1.25rem auto
   }
 
@@ -124,11 +124,11 @@ body {
   font-size: 1.33em;
   font-family: $sans;
   width: 60%;
-  padding : 2rem;
+  padding : 1.33rem;
   border: 4px solid $oxford-blue;
   border-radius: 25px;
   background-color: rgba($orange-web, 0.7);
-  margin-top: 150px;
+  margin-top: 4rem;
 
   @include md {
     width: 35%;
@@ -142,7 +142,7 @@ body {
 
 #submit {
   margin: 5rem 0 0 1rem;
-  padding: 2rem 3rem;
+  padding: 1.33rem 2.33rem;
 
   @include md {
     margin-left: 7rem;
