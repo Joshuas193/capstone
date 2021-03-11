@@ -10,8 +10,9 @@ async function createPost(e) {
     geoData.geonames[0].lat,
     geoData.geonames[0].lng,
     dateFormat.dateFormat,
-    endDateFormat,
-    dateFormat.days
+    dateFormat.days,
+    endDateFormat.endDateFormat,
+    endDateFormat.tripDays
   );
   console.log(newUrl)
   const weather = await getWeather(newUrl);
@@ -47,34 +48,42 @@ const getData = async (url) => {
 // Async function to create a date format for historic weather data
 const departureDate = async () => {
   const departure = document.querySelector("#departure").value;
-  const countDownDate = new Date(`${departure}`).getTime();
   let yyyy = new Date(`${departure}`).getFullYear();
   let mm = new Date(`${departure}`).getMonth() + 1;
   let dd = new Date(`${departure}`).getDate();
+  const dateFormat = `${yyyy}-${mm}-${dd}`;
   let now = new Date().getTime();
+  let countDownDate = new Date(`${departure}`).getTime();
   let remainder = countDownDate - now;
   let days = Math.floor(remainder / (1000 * 60 * 60 * 24));
-  const dateFormat = `${yyyy}-${mm}-${dd}`;
-  return { dateFormat, days, departure};
+  console.log(days);
+  return { dateFormat, departure, days };
 };
 
 // Async function to create a return date format for historic weather data
+// Had to modify because the API only lets me pull one day of data at a time
 const returnDate = async departure => {
   const returnDate = document.querySelector("#return-date").value;
   let yyyy = new Date(`${returnDate}`).getFullYear();
   let mm = new Date(`${returnDate}`).getMonth() + 1;
-  let dd = new Date(`${departure}`).getDate() + 1;
-  const endDateFormat = `${yyyy}-${mm}-${dd}`;
-  return endDateFormat;
+  let dd = new Date(`${returnDate}`).getDate();
+  let dd2 = new Date(`${departure}`).getDate();
+  let dd3 = new Date(`${departure}`).getDate() + 1;
+  console.log(dd3);
+  const endDateFormat = `${yyyy}-${mm}-${dd3}`;
+  console.log(endDateFormat);
+  let tripDays = dd - dd2;
+  console.log(tripDays);
+  return { endDateFormat, tripDays };
 };
 
-const weatherApiBuilder = async (lat, lng, dateFormat, endDateFormat, days) => {
+const weatherApiBuilder = async (lat, lng, dateFormat, days, endDateFormat, tripDays) => {
   const baseWeatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?`;
-  const weatherOptions = `units=I&days=${days}&lat=${lat}&lon=${lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
+  const weatherOptions = `units=I&days=${tripDays}&lat=${lat}&lon=${lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
   const historicalWeatherUrl = `https://api.weatherbit.io/v2.0/history/daily?`;
   const historicalWeatherOptions = `units=I&start_date=${dateFormat}&end_date=${endDateFormat}&lat=${lat}&lon=${lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
   const newUrl =
-    days <= 16
+    days <= 7
       ? baseWeatherUrl + weatherOptions
       : historicalWeatherUrl + historicalWeatherOptions;
   return newUrl;
