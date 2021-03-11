@@ -11,9 +11,7 @@ Dependancies are located in the package.json file as well. Here is the list.
 #### Dependancies
 * body-parser v1.19.0
 * cors v2.8.5
-* dotenv v8.2.0
 * express v4.17.1
-* node-fetch v2.6.1
 
 #### Development Dependencies
 * @babel/core v7.12.13

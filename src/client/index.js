@@ -8,8 +8,7 @@ import "./styles/style.scss";
 window.onload = () => {
   document.querySelector("#default-image").style.display = "show";
   document.querySelector("#user-data").style.display = "none";
-  document.querySelector("#countdown-div").style.display = "none";
-  document.querySelector("#weather-data").style.display = "none";
+  document.querySelector("#output").style.display = "none";
 };
 
 //Event listener for Add a Trip button
@@ -17,7 +16,7 @@ document.querySelector("#add-trip").addEventListener("click", () => {formUiUpdat
 
 // Function to make the button invisible after clicking
 function formUiUpdate() {
-  document.querySelector("#add-trip").style.display = "none";
+  document.querySelector("#trip-button").style.display = "none";
   document.querySelector("#user-data").style.display = "flex";
 }
 

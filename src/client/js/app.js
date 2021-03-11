@@ -150,6 +150,7 @@ const updateWeatherUi = async () => {
   const response = await fetch("http://localhost:3000/all");
   const allData = await response.json();
   console.log(allData);
+  document.querySelector("#output").style.display = "block";
   const weatherDiv = document.querySelector("#weather-data");
   const message = `<p>Typical weather for the date of your trip is:</p>
                    <p>High: ${allData.high}&deg;F Low: ${allData.low}&deg;F</p>
