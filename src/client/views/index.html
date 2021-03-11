@@ -17,6 +17,7 @@
     <div class="headline">
       <h1 id="logo">Travel Planner</h1>
     </div>
+    <div id="content">
     <div id="photo-div">
       <figure id="images">
         <img
@@ -27,35 +28,36 @@
         <figcaption id="pixabay"></figcaption>
       </figure>
     </div>
-    <div id="trip-button">
-      <button id="add-trip" type="button">Add a Trip</button>
-    </div>
-    <form id="user-data">
-      <div id="city-div">
-        <label for="city">Where would you like to go?</label>
-        <input
-          type="text"
-          id="city"
-          placeholder="Enter destination city here"
-        />
+      <div id="trip-button">
+        <button id="add-trip" type="button">Add a Trip</button>
       </div>
-      <div id="departure-div">
-        <label for="departure"
-          >Click the Calendar<br />To enter your Departure Date.</label
-        >
-        <input type="datetime-local" id="departure" />
-        <label for="return-date">When will you be returning?</label>
-        <input type="datetime-local" id="return-date" />
-        <div id="submit-button-div">
-          <button id="submit" type="submit">Submit</button>
+      <form id="user-data">
+        <div id="city-div">
+          <label for="city">Where would you like to go?</label>
+          <input
+            type="text"
+            id="city"
+            placeholder="Enter destination city here"
+          />
         </div>
+        <div id="departure-div">
+          <label for="departure"
+            >Click the Calendar<br />To enter your Departure Date.</label
+          >
+          <input type="datetime-local" id="departure" />
+          <label for="return-date">When will you be returning?</label>
+          <input type="datetime-local" id="return-date" />
+          <div id="submit-button-div">
+            <button id="submit" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+      <div id="countdown-div">
+        <div id="countdown-message"></div>
+        <div id="countdown-timer"></div>
       </div>
-    </form>
-    <div id="countdown-div">
-      <div id="countdown-message"></div>
-      <div id="countdown-timer"></div>
+      <div id="weather-data"></div>
     </div>
-    <div id="weather-data"></div>
     <footer id="footer"></footer>
   </body>
 </html>

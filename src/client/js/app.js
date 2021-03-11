@@ -64,7 +64,7 @@ const departureDate = async () => {
 // Had to modify because the API only lets me pull one day of data at a time
 const returnDate = async departure => {
   const returnDate = document.querySelector("#return-date").value;
-  let yyyy = new Date(`${returnDate}`).getFullYear();
+  let yyyy = new Date(`${returnDate}`).getFullYear() - 1;
   let mm = new Date(`${returnDate}`).getMonth() + 1;
   let dd = new Date(`${returnDate}`).getDate();
   let dd2 = new Date(`${departure}`).getDate();
@@ -77,6 +77,8 @@ const returnDate = async departure => {
   return { endDateFormat, tripDays };
 };
 
+// Function that determines if a trip is in more than 7 days inthe future,
+// and creates an API based on either current or historical data
 const weatherApiBuilder = async (lat, lng, dateFormat, days, endDateFormat, tripDays) => {
   const baseWeatherUrl = `https://api.weatherbit.io/v2.0/forecast/daily?`;
   const weatherOptions = `units=I&days=${tripDays}&lat=${lat}&lon=${lng}&key=9bd6b8d321a64509ad2a9dbc04fbebfc`;
@@ -97,6 +99,7 @@ const getWeather = async newUrl => {
   return weatherData;
 };
 
+// Async API call using data from geodata function for user input
 const photoUrlBuilder = async encodedCity => {
   const basePhotoUrl = `https://pixabay.com/api/?key=20255622-d1761b0f153bb43efa0b79842&`;
   const photoOptions = `q=${encodedCity}&image_type=photo&orientation=horizontal&category=travel`;
@@ -105,14 +108,14 @@ const photoUrlBuilder = async encodedCity => {
 };
 
 // Async fecth of destination photo
-const getPhotos = async (photoUrl) => {
+const getPhotos = async photoUrl => {
   const photoRes = await fetch(photoUrl); // Creating the API Key dynamically with user input
   const photoData = await photoRes.json();
   console.log(photoData);
   return photoData;
 };
 
-// Async setting up POST
+// Async setting up POST to server
 const postData = async (url = "", data = {}) => {
   const response = await fetch(url, {
     method: "POST",

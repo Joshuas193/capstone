@@ -27,15 +27,32 @@ $screen-large: 1000px;
   }
 }
 
+// Temporary!
+div {
+  border: 1px solid black;
+}
+
+// Content container styling
+#content {
+  @include lg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+// HTML backgrouns styling
 html {
   background: $white;
 }
 
+//basic body styling
 body {
   min-height: 100vh;
   background: $platinum;
 }
 
+// Styling for the heading
 #logo {
   display: flex;
   justify-content: center;
@@ -58,15 +75,32 @@ body {
   }
 }
 
-//Photo container
+//Photo container styling
 #photo-div {
   display: flex;
   justify-content: center;
   width: 100%;
   height: auto;
   margin: 1rem auto;
-  // Photo Styling
-  img {
+  // Medium and larger screens for photo container
+  @include md {
+    width: 87.5%;
+    margin: 1rem auto
+  }
+  @include lg {
+    width: 60%;
+    justify-content: left;
+    margin: 0;
+  }
+}
+
+#images {
+  @include lg {
+    width: 100%;
+    margin: 1rem 1rem;
+  }
+   // Photo Styling
+   img {
     max-width: 100%;
     max-height: 50vh;
 
@@ -75,32 +109,21 @@ body {
     }
 
     @include lg {
-      max-height: 60vh;
+      width: 100%;
     }
-  }
-  // Medium and larger screens for photo container
-  @include md {
-    width: 87.5%;
-    margin: 1rem auto
-  }
-
-  @include lg {
-    width: 50%;
-    justify-content: left;
-    margin: 2.66rem 0 1rem 0.90rem;
   }
 }
 
-// Pixabay Icon Styles
+// Pixabay Icon Div Styles
 #pixabay {
   display: flex;
   flex-direction: row;
   font-size: 0.85em;
-
+  //Pixabay paragraph styling
   p {
     margin: 0 .25rem;
   }
-
+  //Pixabay image styling
   a img {
     width: 60px;
     height: auto;
@@ -108,23 +131,25 @@ body {
   }
 }
 
+// Add a trip button styling
 #trip-button {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   @include lg {
-    justify-content: left;
-    margin-left: 3.33rem;
+    width: 50%;
   }
 }
 
+// Submit button div styling
 #submit-button-div {
   display: flex;
   justify-content: center;
 }
 
 // Button Styling
-#add-trip, #submit{
+#add-trip, #submit {
   font-weight: 700;
   font-size: 1.33em;
   font-family: $sans;
@@ -141,10 +166,12 @@ body {
   }
 
   @include lg {
-    width: 30%;
+    margin: 0;
+    width: 40%;
   }
 }
 
+// Submit button only styling
 #submit {
   margin: 2.5rem 1rem;
   padding: 1.33rem 2.33rem;
@@ -159,6 +186,7 @@ body {
   margin: 0 auto;
 }
 
+// Label and input container styling
 #city-div, #departure-div {
   width: 100%;
 }
@@ -177,14 +205,17 @@ label, input {
   }
 }
 
+// Input only styling
 input {
   margin-bottom: 1rem;
 }
 
+// countdown and weather info container styling
 #countdown-div, #weather-data {
   width: 85%;
 }
 
+// countdown and weather info styling
 #countdown-message, #countdown-timer, #weather-data p {
   font-size: 1em;
   font-family: $serif;
