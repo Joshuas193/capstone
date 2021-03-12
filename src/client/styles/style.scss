@@ -27,11 +27,6 @@ $screen-large: 1000px;
   }
 }
 
-// Temporary!
-div {
-  border: 1px solid black;
-}
-
 // Content container styling
 #content {
   @include lg{
@@ -61,17 +56,18 @@ body {
   font-size: 2.5em;
   font-family: $serif;
   margin: 0 0 2.83rem 0;
-  padding: 2rem;
+  padding: 1.83rem;
   text-shadow: $text-shadow-outline, $text-shadow-light;
   // Styling change for medium screens for the logo element using the mixin created above
   @include md {
     font-size: 4.5em;
+    padding: 2.33rem;
   }
   // Styling change for larger screens for the logo element using the mixin created above
   @include lg {
     display: block;
     font-size: 6em;
-    padding-left: 3.33rem;
+    padding: 3.33rem;
   }
 }
 
@@ -184,8 +180,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 40%;
+  width: 85%;
   margin: 0 auto;
+
+  @include md {
+    width: 75%;
+  }
 }
 
 #output {
