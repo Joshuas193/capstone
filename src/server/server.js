@@ -37,9 +37,11 @@ app.post("/addData", (req, res) => {
     lat: newData.geoData.geonames[0].lat,
     lng: newData.geoData.geonames[0].lng,
     country: newData.geoData.geonames[0].countryName,
-    cityName: newData.weather.city_name,
+    cityName: newData.geoData.geonames[0].name,
     high: newData.weather.data[0].high_temp,
     low: newData.weather.data[0].low_temp,
+    max: newData.weather.data[0].max_temp,
+    min: newData.weather.data[0].hmin_temp,
     weather: newData.weather.data[0].weather.description,
     image: newData.data.hits[0].largeImageURL,
   };

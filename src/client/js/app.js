@@ -21,7 +21,7 @@ async function createPost(e) {
     // Calling funtion to POST data to server
     postData("http://localhost:3000/addData", { geoData, weather, data }).then(function () {
       // Calling the functions to dynamically update content
-      updateUiPhoto();
+      updateUiPhoto(endDateFormat.tripDays);
       updateWeatherUi();
     });
   });
@@ -32,7 +32,7 @@ const urlBuilder = async () => {
   const city = document.querySelector("#city").value;
   const encodedCity = encodeURIComponent(city);
   const baseUrl = `http://api.geonames.org/searchJSON?q=`;
-  const options = `${encodedCity}&maxRows=1&username=joshuas1411`;
+  const options = `${encodedCity}&maxRows=10&username=joshuas1411`;
   const url = baseUrl + options;
   return { encodedCity, url };
 };
@@ -48,10 +48,11 @@ const getData = async (url) => {
 // Async function to create a date format for historic weather data
 const departureDate = async () => {
   const departure = document.querySelector("#departure").value;
-  let yyyy = new Date(`${departure}`).getFullYear();
+  let yyyy = new Date(`${departure}`).getFullYear() - 1;
   let mm = new Date(`${departure}`).getMonth() + 1;
   let dd = new Date(`${departure}`).getDate();
   const dateFormat = `${yyyy}-${mm}-${dd}`;
+  console.log(dateFormat);
   let now = new Date().getTime();
   let countDownDate = new Date(`${departure}`).getTime();
   let remainder = countDownDate - now;
@@ -133,13 +134,13 @@ const postData = async (url = "", data = {}) => {
 };
 
 // Async function to update the UI with the information from the user and from the API
-const updateUiPhoto = async () => {
+const updateUiPhoto = async tripDays => {
   const response = await fetch("http://localhost:3000/all");
   const allData = await response.json();
   console.log(allData);
   document.querySelector("#default-image").style.display = "none";
   const photoMessage = document.querySelector("#countdown-message");
-  photoMessage.innerHTML = `Your trip to ${allData.cityName} starts in:`;
+  photoMessage.innerHTML = `<p>Your ${tripDays} day trip to ${allData.cityName} starts in:</p>`;
   const photoCode = `<img src="${allData.image}" alt="Photo of ${allData.cityName}">`;
   const photoDiv = document.querySelector("#images");
   photoDiv.insertAdjacentHTML("afterbegin", photoCode);

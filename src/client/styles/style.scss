@@ -27,15 +27,6 @@ $screen-large: 1000px;
   }
 }
 
-// Content container styling
-#content {
-  @include lg{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-}
-
 // HTML backgrouns styling
 html {
   background: $white;
@@ -58,16 +49,27 @@ body {
   margin: 0 0 2.83rem 0;
   padding: 1.83rem;
   text-shadow: $text-shadow-outline, $text-shadow-light;
+
   // Styling change for medium screens for the logo element using the mixin created above
   @include md {
     font-size: 4.5em;
     padding: 2.33rem;
   }
+
   // Styling change for larger screens for the logo element using the mixin created above
   @include lg {
     display: block;
     font-size: 6em;
     padding: 3.33rem;
+  }
+}
+
+// Content container styling
+#content {
+  @include lg{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
   }
 }
 
@@ -78,30 +80,40 @@ body {
   width: 100%;
   height: auto;
   margin: 1rem auto;
+
   // Medium and larger screens for photo container
   @include md {
-    width: 87.5%;
-    margin: 1rem auto
+    width: 95%;
+    margin: 1rem auto;
   }
+
   @include lg {
     max-width: 60%;
     margin: 0;
   }
 }
 
+// Figure containing photos and figcaption link to pixabay
 #images {
+  margin: 0.66rem 0.66rem;
+
+  @include md {
+    margin: 1.33 rem 1.33rem;
+  }
+
   @include lg {
     width: 100%;
-    margin: 0.66rem 0.66rem;
+    margin: 1.66rem 2.66rem;
   }
+
    // Photo Styling
    img {
     max-width: 100%;
     max-height: 50vh;
 
     @include md {
-      max-width: 90%;
-      max-height: 55vh;
+      max-width: 100%;
+      height: auto;
       margin: 0 auto;
     }
 
@@ -118,9 +130,11 @@ body {
   flex-direction: row;
   font-size: 0.85em;
   //Pixabay paragraph styling
+
   p {
     margin: 0 .25rem;
   }
+
   //Pixabay image styling
   a img {
     width: 60px;
@@ -189,7 +203,7 @@ body {
 }
 
 #output {
-  width: 40%;
+  width: 100%;
 }
 
 // Label and input container styling
@@ -200,7 +214,7 @@ body {
 // Form label and input styling
 label, input {
   display: block;
-  font-size: 1em;
+  font-size: 0.9em;
   font-family: $serif;
   width: 95%;
   margin: 0 auto;
@@ -218,7 +232,9 @@ input {
 
 // countdown and weather info container styling
 #countdown-div, #weather-data {
-  width: 85%;
+  width: 90%;
+  margin: 0 auto;
+
   @include lg {
     width: 40%;
   }
@@ -226,7 +242,7 @@ input {
 
 // countdown and weather info styling
 #countdown-message, #countdown-timer, #weather-data p {
-  font-size: 1em;
+  font-size: 0.9em;
   font-family: $serif;
   min-width: 75vw;
 }
