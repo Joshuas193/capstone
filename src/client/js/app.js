@@ -166,4 +166,4 @@ const updateWeatherUi = async days => {
   weatherDiv.insertAdjacentHTML("afterbegin", message);
 };
 
-export { createPost };
+export { createPost, urlBuilder };
