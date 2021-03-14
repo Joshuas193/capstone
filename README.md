@@ -30,6 +30,7 @@ Dependancies are located in the package.json file as well. The list is as follow
 * webpack v5.21.2
 * webpack-cli v4.5.0
 * webpack-dev-server v3.11.2
+* workbox-webpack-plugin v6.1.1
 
 ### Installation Instructions
 * First you will need to install the application. Open your terminal and navigate into the directory you wish to install the application and type `npm install`
