@@ -24,6 +24,7 @@ Dependancies are located in the package.json file as well. The list is as follow
 * mini-css-extract-plugin v1.3.6
 * node-sass v5.0.0
 * optimize-css-assets-webpack-plugin v5.0.4
+* regenerator-runtime v0.13.7
 * sass-loader v11.0.1
 * style-loader v2.0.0
 * terser-webpack-plugin v5.1.1
