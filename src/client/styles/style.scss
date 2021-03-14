@@ -13,6 +13,8 @@ $text-shadow-light: 2px 2px 5px rgba($white, 0.8);
 // Screen Size Breakpoints
 $screen-medium: 550px;
 $screen-large: 1050px;
+$screen-4k: 2300px;
+$footer-height: 3rem;
 
 // Mixins for Media Queries for medium and large screens
 @mixin md {
@@ -35,7 +37,14 @@ html {
 // Basic body styling
 body {
   min-height: 100vh;
+  position: relative;
   background: $platinum;
+}
+
+// Keeps footer at the bottom of the content
+#content-wrap {
+  min-height: 100vh;
+  padding-bottom: $footer-height;
 }
 
 // Styling for the heading
@@ -96,6 +105,9 @@ body {
 
 // Figure containing photos and figcaption link to pixabay
 #images {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0.66rem 0.66rem;
 
   @include md {
@@ -120,7 +132,8 @@ body {
 
     @include lg {
       max-width: 100%;
-      margin: 0 auto;
+      max-height: 100vh;
+      margin: 0;
     }
   }
 }
@@ -149,6 +162,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include md {
+    padding-bottom: 3rem;
+  }
 
   @include lg {
     width: 40%;
@@ -253,15 +270,15 @@ input {
 
 // countdown and weather info container styling
 #countdown-div, #weather-data {
-  width: 90%;
+  max-width: 80%;
   margin: 0 auto;
 
   @include md {
-    max-width: 70%;
+    max-width: 66.66%;
   }
 
   @include lg {
-    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -269,7 +286,7 @@ input {
 #countdown-message, #countdown-timer, #weather-data p {
   font-size: 0.9em;
   font-family: $serif;
-  min-width: 75vw;
+  width: 100%;
 
   @include md {
     font-size: 1.33em;
@@ -277,5 +294,23 @@ input {
 
   @include lg {
     font-size: 1.33em;
+  }
+}
+
+#footer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background: $orange-web;
+  color: $oxford-blue;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  font-family: $serif;
+  font-size: 0.83rem;
+
+  p {
+    padding-left: 1rem;
   }
 }

@@ -27,7 +27,7 @@ document.querySelector('#submit').addEventListener('click', createTimer);
 const myIcon = new Image();
 myIcon.src = Icon;
 const figC = document.querySelector("#pixabay");
-const imgCode = `<p>Images courtesy of:</p> <a href="https://pixabay.com/"><img src="${Icon}" alt="Pixabay Logo"></a>`;
+const imgCode = `<p>Images courtesy of:</p> <a href="https://pixabay.com/" target="_blank"><img src="${Icon}" alt="Pixabay Logo"></a>`;
 figC.innerHTML = imgCode;
 
 export { createPost, createTimer };
