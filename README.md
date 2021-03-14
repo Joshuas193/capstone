@@ -30,6 +30,7 @@ Dependancies are located in the package.json file as well. The list is as follow
 * webpack v5.21.2
 * webpack-cli v4.5.0
 * webpack-dev-server v3.11.2
+* workbox-webpack-plugin v6.1.1
 
 ### Installation Instructions
 * First you will need to install the application. Open your terminal and navigate into the directory you wish to install the application and type `npm install`
@@ -39,3 +40,6 @@ Dependancies are located in the package.json file as well. The list is as follow
 
 ### Use Instructions
 The app is quite simple. All that is required is to enter the name of a city in the proper field, then enter a departure time and date as well as a return time and date. You can use the calendar icon in the entry fields to quickly enter the ddates quickly. Then just press the submit button and the application will pull all the neccesary data from the APIs and return your information and a photo of the placve you wish to visit.
+
+### Extra Steps
+I implemented the extra step "Add end date and display length of trip"
