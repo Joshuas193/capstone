@@ -22,7 +22,7 @@ async function createPost(e) {
     postData("http://localhost:3000/addData", { geoData, weather, data }).then(function () {
       // Calling the functions to dynamically update content
       updateUiPhoto(endDateFormat.tripDays);
-      updateWeatherUi();
+      updateWeatherUi(dateFormat.days);
     });
   });
 }
@@ -147,15 +147,22 @@ const updateUiPhoto = async tripDays => {
 };
 
 // Async function to update the weather div with information
-const updateWeatherUi = async () => {
+const updateWeatherUi = async days => {
   const response = await fetch("http://localhost:3000/all");
   const allData = await response.json();
   console.log(allData);
   document.querySelector("#output").style.display = "block";
   const weatherDiv = document.querySelector("#weather-data");
-  const message = `<p>Typical weather for the date of your trip is:</p>
-                   <p>High: ${allData.high}&deg;F Low: ${allData.low}&deg;F</p>
-                   <p>${allData.weather}</p>`;
+  const message =
+  days <= 7 ? `<p>The current weather forecast for your trip is:</p>
+               <p>High: ${allData.high}&deg;F Low: ${allData.low}&deg;F</p>
+               <p>${allData.clouds}% cloud cover and an average of</p>
+               <p>${allData.precip} inches of precipitataion.</p>`:
+              `<p>Typical weather for the date of your trip is:</p>
+               <p>High: ${allData.max}&deg;F  Low: ${allData.min}&deg;F</p>
+               <p>${allData.clouds}% cloud cover and an average of</p>
+               <p>${allData.precip} inches of precipitataion.</p>`;
+  console.log(days);
   weatherDiv.insertAdjacentHTML("afterbegin", message);
 };
 

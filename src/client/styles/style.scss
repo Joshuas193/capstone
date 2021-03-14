@@ -12,7 +12,7 @@ $text-shadow-outline: -1px 0 $black, 0 1px $black, 1px 0 $black, -1px 0 $black;
 $text-shadow-light: 2px 2px 5px rgba($white, 0.8);
 // Screen Size Breakpoints
 $screen-medium: 550px;
-$screen-large: 1000px;
+$screen-large: 1050px;
 
 // Mixins for Media Queries for medium and large screens
 @mixin md {
@@ -27,12 +27,12 @@ $screen-large: 1000px;
   }
 }
 
-// HTML backgrouns styling
+// HTML background styling
 html {
   background: $white;
 }
 
-//basic body styling
+// Basic body styling
 body {
   min-height: 100vh;
   background: $platinum;
@@ -61,6 +61,7 @@ body {
     display: block;
     font-size: 6em;
     padding: 3.33rem;
+    margin-bottom: 3.16rem;
   }
 }
 
@@ -150,7 +151,7 @@ body {
   align-items: center;
 
   @include lg {
-    width: 50%;
+    width: 40%;
   }
 }
 
@@ -173,13 +174,13 @@ body {
   margin-top: 2.5rem;
 
   @include md {
-    width: 40%;
+    width: 45%;
     font-size: 1.66em;
   }
 
   @include lg {
     margin: 0;
-    width: 40%;
+    width: 50%;
   }
 }
 
@@ -202,10 +203,6 @@ body {
   }
 }
 
-#output {
-  width: 100%;
-}
-
 // Label and input container styling
 #city-div, #departure-div {
   width: 100%;
@@ -222,6 +219,11 @@ label, input {
 
   @include md {
     width: 70%;
+    font-size: 1.33em;
+  }
+
+  @include lg {
+    font-size: 1.33em;
   }
 }
 
@@ -230,13 +232,36 @@ input {
   margin-bottom: 1rem;
 }
 
+// Div containing the outputted data
+#output {
+  width: 100%;
+  padding-bottom: 2rem;
+
+  @include md {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    margin: auto 0.66rem;
+  }
+}
+
 // countdown and weather info container styling
 #countdown-div, #weather-data {
   width: 90%;
   margin: 0 auto;
 
+  @include md {
+    max-width: 70%;
+  }
+
   @include lg {
-    width: 40%;
+    width: 100%;
   }
 }
 
@@ -245,4 +270,12 @@ input {
   font-size: 0.9em;
   font-family: $serif;
   min-width: 75vw;
+
+  @include md {
+    font-size: 1.33em;
+  }
+
+  @include lg {
+    font-size: 1.33em;
+  }
 }
