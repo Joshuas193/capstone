@@ -1,4 +1,4 @@
-import { createPost } from "./app";
+import { createPost } from "../js/app";
 
 test('createPost is declared', () => {
   expect(createPost).toBeDefined();

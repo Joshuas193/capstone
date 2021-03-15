@@ -27,6 +27,7 @@ Dependancies are located in the package.json file as well. The list is as follow
 * regenerator-runtime v0.13.7
 * sass-loader v11.0.1
 * style-loader v2.0.0
+* supertest v6.1.3
 * terser-webpack-plugin v5.1.1
 * webpack v5.21.2
 * webpack-cli v4.5.0
@@ -41,6 +42,9 @@ Dependancies are located in the package.json file as well. The list is as follow
 
 ### Use Instructions
 The app is quite simple. All that is required is to enter the name of a city in the proper field, then enter a departure time and date as well as a return time and date. You can use the calendar icon in the entry fields to quickly enter the ddates quickly. Then just press the submit button and the application will pull all the neccesary data from the APIs and return your information and a photo of the placve you wish to visit.
+
+### Testing
+I wrote a couple simple tests. You can access these in the terminal by typing in the command `npm test`. There are test for the main function and for a test route for the server.
 
 ### Extra Steps
 I implemented the extra step "Add end date and display length of trip"
